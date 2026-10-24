@@ -1,0 +1,15 @@
+# secrets: NEVER commit these
+credentials.json
+token.json
+.env
+
+# private data and large files
+*.db
+*.csv
+models/*
+!models/.gitkeep
+
+__pycache__/
+venv/
+.venv/
+*.zip
