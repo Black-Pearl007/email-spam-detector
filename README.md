@@ -7,6 +7,21 @@ spam probability, suspicious signals (SPF/DKIM fail, reply-to mismatch, shortene
 Gmail API -> fetcher (poll) -> parser (MIME/HTML cleanup) -> DistilBERT -> SQLite -> Streamlit dashboard
 ```
 
+## History
+
+This project started in 2022 as a TF-IDF spam classifier. In 2026 it was rebuilt around a
+fine-tuned DistilBERT model, with the Gmail connection, header checks (SPF, DKIM, reply-to
+mismatch, shortened links) and the live dashboard added.
+
+## Results
+
+Fine-tuned on Enron-Spam, the model reached **99.2% accuracy** and **ROC-AUC 0.9995** on a
+held-out test set of 2,000 emails.
+
+These numbers come from the Enron-Spam test split, an older collection of emails. Today's spam
+and your own inbox may look different, so expect lower accuracy there. The "Correct / Wrong"
+buttons on the dashboard record where it makes mistakes.
+
 ## 1. Train the model
 Run `email_spam_distilbert_colab.ipynb` on Google Colab (T4 GPU). It saves the model to Drive.
 Download the folder `email-spam-distilbert` and place it in `models/`.
